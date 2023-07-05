@@ -10,7 +10,7 @@ describe("Sidebar", () => {
     </MemoryRouter>
   );
 
-  test("renders Sidebar component", () => {
+  test("should render Sidebar component", () => {
     const { getByText } = render(wrapper);
 
     const sidebarElement = getByText("Tag Management System");
@@ -21,7 +21,7 @@ describe("Sidebar", () => {
       expect(linkElement).toBeInTheDocument();
       expect(linkElement.getAttribute("href")).toBe(item.url);
     });
-
-    // Test for change route when click on menu item
   });
+  
+  // Test for change route when click on menu item
 });

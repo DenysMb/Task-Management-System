@@ -18,7 +18,7 @@ describe("TagEditor", () => {
     </AppContext.Provider>
   );
 
-  test("renders TagEditor component with tag data", () => {
+  test("should render TagEditor component with tag data", () => {
     const { getByText, getByLabelText } = render(wrapperWithTag);
 
     const nameInput = getByLabelText("title") as HTMLInputElement;
@@ -39,7 +39,7 @@ describe("TagEditor", () => {
     expect(getByText("Edit")).toBeInTheDocument();
   });
 
-  test("renders TagEditor component without tag data", () => {
+  test("should render TagEditor component without tag data", () => {
     const { getByText, getByLabelText } = render(wrapperWithoutTag);
 
     const nameInput = getByLabelText("title") as HTMLInputElement;
@@ -56,7 +56,7 @@ describe("TagEditor", () => {
     expect(getByText("Create")).toBeInTheDocument();
   });
 
-  test("calls removeTag function when 'Remove' button is clicked", () => {
+  test("should call removeTag function when 'Remove' button is clicked", () => {
     const { getByText } = render(wrapperWithTag);
 
     userEvent.click(getByText("Remove"));
@@ -64,7 +64,7 @@ describe("TagEditor", () => {
     // ...
   });
 
-  test("calls fetchCloseAndClearTag function when 'Close' button is clicked", async () => {
+  test("should call fetchCloseAndClearTag function when 'Close' button is clicked", async () => {
     const { getByText } = render(wrapperWithTag);
 
     await userEvent.click(getByText("Close"));
@@ -72,7 +72,7 @@ describe("TagEditor", () => {
     // ...
   });
 
-  test("calls handleChange function when input values are changed", () => {
+  test("should call handleChange function when input values are changed", () => {
     const { getByDisplayValue } = render(wrapperWithTag);
 
     const nameInput = getByDisplayValue("Tag 1") as HTMLInputElement;
@@ -83,7 +83,7 @@ describe("TagEditor", () => {
     // ...
   });
 
-  test("calls createOrEditTag function when 'Edit' button is clicked", () => {
+  test("should call createOrEditTag function when 'Edit' button is clicked", () => {
     const { getByText } = render(wrapperWithTag);
 
     userEvent.click(getByText("Edit"));

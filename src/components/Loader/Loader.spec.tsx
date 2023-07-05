@@ -4,7 +4,7 @@ import Loader from "./Loader";
 describe("Loader", () => {
   const wrapper = <Loader />;
 
-  test("renders Loader component", () => {
+  test("should render Loader component", () => {
     const { getByTestId } = render(wrapper);
 
     const loaderElement = getByTestId("loader");

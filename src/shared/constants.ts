@@ -1,4 +1,3 @@
-// I will use only one big constants.ts file for this project.
 import { Tag } from "../models";
 import { ROUTES } from "./routes";
 
@@ -9,10 +8,6 @@ export const BOX_SHADOW = (x?: number, y?: number, spread?: number) =>
 export const BACKGROUND_LIGHT = "#f1f5f9";
 export const BACKGROUND_DARK = "#292929";
 
-// There is a growing opinion in the comunity that we should avoid to use ENUMs.
-// Here is a example of an article talking about this: https://dev.to/ivanzm123/dont-use-enums-in-typescript-they-are-very-dangerous-57bh
-// So, this is the reason that I am using const assertion here.
-// https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4.html#const-assertions
 export const BORDER_RADIUS = {
   Small: BASE_SPACING / 2,
   Medium: BASE_SPACING,
@@ -24,13 +19,13 @@ export const SPACING = {
   Small: BASE_SPACING / 2,
   Medium: BASE_SPACING,
   Large: BASE_SPACING * 2,
-} as const;
+};
 
 export const COLOR = {
   Opacity: (value: number) => `rgba(0, 0, 0, ${value})`,
   Teal: "#14b8a650",
   Pink: "#ec489950",
-} as const;
+};
 
 export const TAG_TYPE: TagType[] = [
   { id: "1", title: "Lorem reprehenderit" },

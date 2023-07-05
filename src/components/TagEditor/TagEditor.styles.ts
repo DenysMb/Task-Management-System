@@ -36,6 +36,13 @@ export const styles = {
     "@media (prefers-color-scheme: light)": {
       background: BACKGROUND_LIGHT,
     },
+    "@media only screen and (max-width: 768px)": {
+      top: BASE_SPACING * 10,
+      height: `calc(100% - ${BASE_SPACING * 10}px)`,
+      width: "100%",
+      borderTopLeftRadius: BORDER_RADIUS.Large,
+      borderTopRightRadius: BORDER_RADIUS.Large,
+    },
   }),
 
   topbar: {

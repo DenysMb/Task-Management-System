@@ -15,6 +15,9 @@ export const styles = {
     backgroundColor: COLOR.Opacity(0.1),
     padding: SPACING.Large,
     gap: SPACING.Large,
+    "@media only screen and (max-width: 768px)": {
+      width: "100%",
+    },
   }),
 
   title: css({
@@ -24,6 +27,10 @@ export const styles = {
   menu: css({
     display: "flex",
     flexDirection: "column",
+    "@media only screen and (max-width: 768px)": {
+      flexDirection: "row",
+      justifyContent: "center",
+    },
   }),
 
   menuItem: css({

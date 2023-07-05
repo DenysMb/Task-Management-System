@@ -12,6 +12,3 @@ Since it's a very simple application, there is no need for a complex state manag
 
 ## Why am I not using any ENUM?
 There is a growing opinion in the comunity that we should avoid to use ENUMs and start to use [const assertion](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4.html#const-assertions) if needed.
-
-## Why is the project not resposive?
-I wanted to make it responsive, I even though in start the project with a mobile-first approach, but I didn't have enough time to work in this project.

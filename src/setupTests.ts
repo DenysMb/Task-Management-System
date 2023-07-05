@@ -28,6 +28,14 @@ const mockTags = [
     content: "Tag 2 Content",
     createdAt,
   },
+  {
+    id: "3",
+    title: "Tag 3",
+    type: "3",
+    trigger: "3",
+    content: "Tag 3 Content",
+    createdAt,
+  },
 ];
 
 const mockTriggers = [

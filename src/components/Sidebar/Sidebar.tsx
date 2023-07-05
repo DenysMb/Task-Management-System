@@ -4,7 +4,7 @@ import { MENU_ITEMS } from "../../shared/constants";
 
 const Sidebar = () => {
   return (
-    <div data-testid="sidebar" css={styles.self}>
+    <div css={styles.self}>
       <h4 css={styles.title}>Tag Management System</h4>
 
       <ul css={styles.menu}>

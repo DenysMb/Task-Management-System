@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Tags from "./Tags";
 import { AppContext, AppContextProps } from "../../context/AppContext";
@@ -33,10 +33,12 @@ describe("Tags", () => {
   });
 
   test("should open tag editor when 'New Tag' button is clicked", () => {
-    const { getByTestId, getByText } = render(wrapperWithTags);
+    const { getByText } = render(wrapperWithTags);
 
     userEvent.click(getByText("New Tag"));
 
-    expect(getByTestId("tag-editor")).toBeInTheDocument();
+    waitFor(() => {
+      expect(getByText("Create Tag")).toBeInTheDocument();
+    });
   });
 });

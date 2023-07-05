@@ -13,14 +13,21 @@ const Home = () => {
       <h1>Home</h1>
 
       <div css={styles.content}>
-        <div css={styles.card} onClick={() => navigate(ROUTES.Tags)}>
+        <div
+          css={styles.card}
+          onClick={() => {
+            console.log("TAGS WAS CLICKED");
+
+            navigate(ROUTES.Tags);
+          }}
+        >
           <h2>Total Tags</h2>
-          <h1 data-testid="tags-card">{tags?.length ?? "..."}</h1>
+          <h1>{tags?.length ?? "..."}</h1>
         </div>
 
         <div css={styles.card} onClick={() => navigate(ROUTES.Triggers)}>
           <h2>Total Triggers</h2>
-          <h1 data-testid="triggers-card">{triggers?.length ?? "..."}</h1>
+          <h1>{triggers?.length ?? "..."}</h1>
         </div>
       </div>
     </div>

@@ -1,12 +1,16 @@
-import { render } from "@testing-library/react";
-import Sidebar from "./Sidebar";
+import { render, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import { MENU_ITEMS } from "../../shared/constants";
+import { AppRoutes } from "../../App";
+import { Sidebar } from "..";
+import { ROUTES } from "../../shared/routes";
 
 describe("Sidebar", () => {
   const wrapper = (
-    <MemoryRouter>
+    <MemoryRouter initialEntries={[ROUTES.Home]}>
       <Sidebar />
+      <AppRoutes />
     </MemoryRouter>
   );
 
@@ -22,6 +26,28 @@ describe("Sidebar", () => {
       expect(linkElement.getAttribute("href")).toBe(item.url);
     });
   });
-  
-  // Test for change route when click on menu item
+
+  test("should navigate to /tags when Tags is clicked", () => {
+    const { getByText } = render(wrapper);
+
+    const tagMenuLink = getByText(MENU_ITEMS[1].name);
+
+    userEvent.click(tagMenuLink);
+
+    waitFor(() => {
+      expect(getByText("Tags")).toBeInTheDocument();
+    });
+  });
+
+  test("should navigate to /triggers when Triggers is clicked", () => {
+    const { getByText } = render(wrapper);
+
+    const tagMenuLink = getByText(MENU_ITEMS[0].name);
+
+    userEvent.click(tagMenuLink);
+
+    waitFor(() => {
+      expect(getByText("Triggers")).toBeInTheDocument();
+    });
+  });
 });

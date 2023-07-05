@@ -25,7 +25,7 @@ const Triggers = () => {
   const isContentReady = useMemo(() => !!triggers, [triggers]);
 
   return (
-    <div data-testid="triggers" css={styles.self}>
+    <div css={styles.self}>
       <h1>Triggers</h1>
 
       <div css={styles.triggers}>

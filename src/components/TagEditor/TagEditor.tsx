@@ -69,7 +69,7 @@ const TagEditor = () => {
   };
 
   return isTagEditorOpened ? (
-    <div data-testid="tag-editor" css={styles.self}>
+    <div css={styles.self}>
       <div css={styles.card}>
         {isContentReady ? (
           <>

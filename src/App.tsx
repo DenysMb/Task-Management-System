@@ -9,6 +9,15 @@ import { TAG_TEMPLATE } from "./shared/constants";
 import { useTags, useTriggers } from "./hooks";
 import { ROUTES } from "./shared/routes";
 
+// Exporting the routes here just to not need to mock a new one for tests
+export const AppRoutes = () => (
+  <Routes>
+    <Route path={ROUTES.Home} element={<Home />} />
+    <Route path={ROUTES.Tags} element={<Tags />} />
+    <Route path={ROUTES.Triggers} element={<Triggers />} />
+  </Routes>
+);
+
 function App() {
   const triggers = useTriggers();
   const [tags, setTags] = useTags();
@@ -31,11 +40,7 @@ function App() {
       <AppContext.Provider value={contextValue}>
         <Sidebar />
 
-        <Routes>
-          <Route path={ROUTES.Home} element={<Home />} />
-          <Route path={ROUTES.Tags} element={<Tags />} />
-          <Route path={ROUTES.Triggers} element={<Triggers />} />
-        </Routes>
+        <AppRoutes />
       </AppContext.Provider>
     </div>
   );

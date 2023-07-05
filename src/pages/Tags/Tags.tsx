@@ -26,7 +26,7 @@ const TagElement = ({
   };
 
   return (
-    <div data-testid="tag" css={styles.tag.card}>
+    <div css={styles.tag.card}>
       <div
         title={capitalizeEveryWord(trigger?.title || "No Trigger")}
         css={{ ...styles.tag.icon }}
@@ -59,7 +59,7 @@ const Tags = () => {
   };
 
   return (
-    <div data-testid="tags" css={styles.self}>
+    <div css={styles.self}>
       <div css={styles.topbar.self}>
         <h1>Tags</h1>
         <button css={styles.topbar.button} onClick={openTagEditor}>

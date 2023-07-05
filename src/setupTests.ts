@@ -2,6 +2,13 @@ import "@testing-library/jest-dom";
 
 import { AppContextProps } from "./context/AppContext";
 
+import { JSXElementConstructor, ReactElement } from "react";
+
+export type Wrapper = ReactElement<
+  unknown,
+  string | JSXElementConstructor<unknown>
+>;
+
 const createdAt = new Date().toISOString();
 
 const mockTags = [

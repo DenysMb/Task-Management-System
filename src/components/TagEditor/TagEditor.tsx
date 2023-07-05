@@ -18,9 +18,7 @@ const TagEditor = () => {
 
   const types = useTypes();
 
-  const isEdit = useMemo(() => {
-    return !!tag.id;
-  }, [isTagEditorOpened]); // eslint-disable-line react-hooks/exhaustive-deps
+  const isEdit = useMemo(() => !!tag?.id, [isTagEditorOpened]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const [isContentReady, setIsContentReady] = useState<boolean>(true);
 
@@ -29,14 +27,17 @@ const TagEditor = () => {
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >
   ) => {
-    setTag!({ ...tag, [event.target.name]: event.target.value });
+    if (setTag && tag)
+      setTag({ ...tag, [event.target.name]: event.target.value });
   };
 
   const createOrEditTag = async () => {
-    if (isEdit) {
-      await patchTag(tag);
-    } else {
-      await postTag(tag);
+    if (tag) {
+      if (isEdit) {
+        await patchTag(tag);
+      } else {
+        await postTag(tag);
+      }
     }
 
     fetchCloseAndClearTag();
@@ -46,12 +47,14 @@ const TagEditor = () => {
     if (!noChangeWasMade) {
       await getTags();
     }
-    setIsTagEditorOpened!(false);
-    setTag!(TAG_TEMPLATE);
+    if (setTag && setIsTagEditorOpened) {
+      setIsTagEditorOpened(false);
+      setTag(TAG_TEMPLATE);
+    }
   };
 
   const removeTag = async () => {
-    await deleteTag(tag);
+    if (tag) await deleteTag(tag);
     fetchCloseAndClearTag();
   };
 
@@ -59,7 +62,7 @@ const TagEditor = () => {
     setIsContentReady(false);
 
     await fetchTags().then((data) => {
-      setTags!(data || []);
+      if (setTags) setTags(data || []);
     });
 
     setIsContentReady(true);
@@ -96,7 +99,7 @@ const TagEditor = () => {
                 name="title"
                 aria-label="title"
                 css={styles.input}
-                value={tag.title}
+                value={tag?.title || ""}
                 onChange={handleChange}
               />
             </div>
@@ -105,12 +108,12 @@ const TagEditor = () => {
               <small>Tag trigger:</small>
               <select
                 css={styles.select}
-                value={tag.trigger}
+                value={tag?.trigger || "1"}
                 name="trigger"
                 aria-label="trigger"
                 onChange={handleChange}
               >
-                {triggers.map((trigger) => (
+                {triggers?.map((trigger) => (
                   <option
                     key={trigger.id}
                     value={trigger.id}
@@ -126,7 +129,7 @@ const TagEditor = () => {
               <small>Tag type:</small>
               <select
                 css={styles.input}
-                value={tag.type}
+                value={tag?.type || "1"}
                 name="type"
                 aria-label="type"
                 onChange={handleChange}
@@ -143,7 +146,7 @@ const TagEditor = () => {
               <small>Tag content:</small>
               <textarea
                 css={styles.textarea}
-                value={tag.content}
+                value={tag?.content || ""}
                 name="content"
                 aria-label="content"
                 onChange={handleChange}

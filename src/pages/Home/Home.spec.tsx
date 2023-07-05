@@ -22,9 +22,11 @@ describe("Home component", () => {
     const tagsCard = getByTestId("tags-card") as HTMLHeadingElement;
     const triggersCard = getByTestId("triggers-card") as HTMLHeadingElement;
 
-    expect(tagsCard.textContent).toBe(mockContextValues.tags.length.toString());
+    expect(tagsCard.textContent).toBe(
+      mockContextValues.tags?.length.toString()
+    );
     expect(triggersCard.textContent).toBe(
-      mockContextValues.triggers.length.toString()
+      mockContextValues.triggers?.length.toString()
     );
   });
 });

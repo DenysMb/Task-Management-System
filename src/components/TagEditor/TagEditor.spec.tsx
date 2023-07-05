@@ -26,10 +26,10 @@ describe("TagEditor", () => {
     const typeInput = getByLabelText("type") as HTMLInputElement;
     const contentInput = getByLabelText("content") as HTMLInputElement;
 
-    expect(nameInput.value).toBe(mockContextValues.tag.title);
-    expect(triggerInput.value).toBe(mockContextValues.tag.trigger);
-    expect(typeInput.value).toBe(mockContextValues.tag.type);
-    expect(contentInput.value).toBe(mockContextValues.tag.content);
+    expect(nameInput.value).toBe(mockContextValues.tag?.title);
+    expect(triggerInput.value).toBe(mockContextValues.tag?.trigger);
+    expect(typeInput.value).toBe(mockContextValues.tag?.type);
+    expect(contentInput.value).toBe(mockContextValues.tag?.content);
 
     expect(getByText("Edit Tag")).toBeInTheDocument();
     expect(getByText("Tag name:")).toBeInTheDocument();

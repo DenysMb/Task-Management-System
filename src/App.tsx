@@ -16,7 +16,6 @@ function App() {
   const [tag, setTag] = useState<Tag>(TAG_TEMPLATE);
   const [isTagEditorOpened, setIsTagEditorOpened] = useState<boolean>(false);
 
-  // I choose to user context here to make it simple.
   const contextValue = {
     triggers,
     tags,
@@ -27,7 +26,6 @@ function App() {
     setIsTagEditorOpened,
   };
 
-  // By being a simple application, I see no need to create a complex router file to handle the routing.
   return (
     <div css={styles.self}>
       <AppContext.Provider value={contextValue}>

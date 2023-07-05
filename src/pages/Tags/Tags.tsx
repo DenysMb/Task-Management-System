@@ -19,8 +19,10 @@ const TagElement = ({
   const { setTag, setIsTagEditorOpened } = useContext(AppContext);
 
   const openTagEditor = () => {
-    setTag!(tag);
-    setIsTagEditorOpened!(true);
+    if (setTag && setIsTagEditorOpened) {
+      setTag(tag);
+      setIsTagEditorOpened(true);
+    }
   };
 
   return (
@@ -50,12 +52,10 @@ const Tags = () => {
 
   const types = useTypes();
 
-  const isContentReady = useMemo(() => {
-    return Boolean(tags?.length && triggers?.length);
-  }, [tags, triggers]);
+  const isContentReady = useMemo(() => !!tags && !!triggers, [tags, triggers]);
 
   const openTagEditor = () => {
-    setIsTagEditorOpened!(true);
+    if (setIsTagEditorOpened) setIsTagEditorOpened(true);
   };
 
   return (
@@ -68,7 +68,7 @@ const Tags = () => {
       </div>
 
       <div css={styles.tags}>
-        {isContentReady ? (
+        {tags && triggers && isContentReady ? (
           tags.map((tag) => (
             <TagElement
               key={tag.id}

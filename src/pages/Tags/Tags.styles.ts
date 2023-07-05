@@ -16,6 +16,15 @@ export const styles = {
     padding: SPACING.Large,
   }),
 
+  emptyPlaceholder: css({
+    flex: 1,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100%",
+    color: COLOR.Opacity(0.5),
+  }),
+
   topbar: {
     self: css({
       display: "flex",

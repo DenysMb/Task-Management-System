@@ -69,14 +69,18 @@ const Tags = () => {
 
       <div css={styles.tags}>
         {tags && triggers && isContentReady ? (
-          tags.map((tag) => (
-            <TagElement
-              key={tag.id}
-              tag={tag}
-              type={types.find((type) => type.id === tag.type)}
-              trigger={triggers.find((trigger) => trigger.id === tag.trigger)}
-            />
-          ))
+          tags?.length ? (
+            tags.map((tag) => (
+              <TagElement
+                key={tag.id}
+                tag={tag}
+                type={types.find((type) => type.id === tag.type)}
+                trigger={triggers.find((trigger) => trigger.id === tag.trigger)}
+              />
+            ))
+          ) : (
+            <h2 css={styles.emptyPlaceholder}>No Tags</h2>
+          )
         ) : (
           <Loader />
         )}

@@ -30,14 +30,16 @@ const Triggers = () => {
 
       <div css={styles.triggers}>
         {triggers && isContentReady ? (
-          triggers.map((trigger) => (
+          triggers?.length ? triggers.map((trigger) => (
             <Trigger
               key={trigger.id}
               color={trigger.color}
               icon={trigger.icon}
               text={trigger.title}
             />
-          ))
+          )) : (
+            <h2 css={styles.emptyPlaceholder}>No Triggers</h2>
+          )
         ) : (
           <Loader />
         )}
